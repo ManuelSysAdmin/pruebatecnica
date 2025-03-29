@@ -23,7 +23,7 @@ jobs:
               username: ${{github.actor}}
               password: ${{secrets.GITHUB_TOKEN}}
 
-          - name: 'Build Inventory Image'
+          - name: 'Build y Push'
             run: |
               docker build . --tag ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
               docker push ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
