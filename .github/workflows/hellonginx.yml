@@ -24,7 +24,6 @@ jobs:
       - name: 'Build y Push'
         run: |
           docker build . --tag ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
-          docker scout
           docker push ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
       - name: Docker Scout CVEs
         uses: docker/scout-action@v0.18.1
