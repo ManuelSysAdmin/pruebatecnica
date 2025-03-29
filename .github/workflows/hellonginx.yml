@@ -36,7 +36,7 @@ jobs:
         with:
           registry: docker.io
           username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASS }}
       - name: Docker Scout CVEs
         uses: docker/scout-action@v0.18.1
         with:
