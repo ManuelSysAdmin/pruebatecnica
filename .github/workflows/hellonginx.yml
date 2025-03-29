@@ -12,7 +12,7 @@ jobs:
     permissions:
       contents: read
       security-events: write
-    uses: manuelsysadmin/imagendockerpruebatecnica/.github/workflows/checkov.yaml@main 
+    uses: ManuelSysAdmin/pruebatecnica/blob/main/.github/workflows/checkov.yaml@main 
   publicar-hello-nginx-docker-imagen:
     runs-on: ubuntu-latest
     permissions:
