@@ -7,32 +7,43 @@ on:
   workflow_dispatch:
 
 jobs:
-      publicar-hello-nginx-docker-imagen:
-        runs-on: ubuntu-latest
-        permissions:
-          contents: read
-          packages: write
-        steps:
-          - name: 'Checkout GitHub Action'
-            uses: actions/checkout@main
-
-          - name: 'Login to GitHub Container Registry'
-            uses: docker/login-action@v1
-            with:
-              registry: ghcr.io
-              username: ${{github.actor}}
-              password: ${{secrets.GITHUB_TOKEN}}
-          - name: 'Docker Scout'
-            id: docker-scout
-            uses: docker/scout-action@v1
-            with:
-              command: cves
-              image: ${{ github.event.repository.name }}
-              ignore-unchanged: true
-              only-severities: critical,high
-              write-comment: true
-              github-token: ${{ secrets.GITHUB_TOKEN }}
-          - name: 'Build y Push'
-            run: |
-              docker build . --tag ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
-              docker push ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
+  checkov:
+    permissions:
+      contents: read
+      security-events: write
+    uses: 0GiS0/scan-docker-vulnerabilities/.github/workflows/checkov.yaml@main 
+  trivy:
+    permissions:
+      contents: read
+      security-events: write
+    uses: 0GiS0/scan-docker-vulnerabilities/.github/workflows/trivy.yaml@main
+  grype:
+    permissions:
+      contents: read
+      security-events: write
+    uses: 0GiS0/scan-docker-vulnerabilities/.github/workflows/grype.yaml@main
+  snyk:
+    permissions:
+      contents: read
+      security-events: write
+    uses: 0GiS0/scan-docker-vulnerabilities/.github/workflows/snyk.yaml@main
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  publicar-hello-nginx-docker-imagen:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@main
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+      - name: 'Build y Push'
+        run: |
+          docker build . --tag ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
+          docker push ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
