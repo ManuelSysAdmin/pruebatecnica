@@ -22,5 +22,5 @@ jobs:
 
           - name: 'Build Inventory Image'
             run: |
-              docker build . --tag ghcr.io/ManuelSysAdmin/imagendockerpruebatecnica:latest
-              docker push ghcr.io/ManuelSysAdmin/imagendockerpruebatecnica:latest
+              docker build . --tag ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
+              docker push ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
