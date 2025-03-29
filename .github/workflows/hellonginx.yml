@@ -31,6 +31,6 @@ jobs:
         uses: docker/scout-action@v1
         with:
           command: cves, recommendations
-          image: ${{ steps.meta.outputs.tags }}
+          image: ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
           sarif-file: sarif.output.json
           summary: true
