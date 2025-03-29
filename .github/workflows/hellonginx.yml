@@ -31,12 +31,3 @@ jobs:
         run: |
           docker build . --tag ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
           docker push ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
-      - name: Analyze for critical and high CVEs
-        id: docker-scout-cves
-        if: ${{ github.event_name != 'pull_request_target' }}
-        uses: docker/scout-action@v1
-        with:
-          command: cves, recommendations
-          image: ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
-          sarif-file: sarif.output.json
-          summary: true
