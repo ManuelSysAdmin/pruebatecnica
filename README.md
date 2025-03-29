@@ -1,2 +1,0 @@
-# pruebatecnica
-prueba tecnica
