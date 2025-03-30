@@ -33,7 +33,6 @@ jobs:
           docker build . --tag ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
           docker push ghcr.io/manuelsysadmin/imagendockerpruebatecnica:latest
 
-
   docker-scout:
     runs-on: ubuntu-latest
     permissions:
