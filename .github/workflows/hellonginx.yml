@@ -58,6 +58,7 @@ jobs:
         exit-code: true
         
     - name: Upload SARIF result
+      id: UPLOAD_SARIF
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: sarif.output.json
