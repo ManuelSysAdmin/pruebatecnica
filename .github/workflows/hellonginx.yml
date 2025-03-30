@@ -56,7 +56,20 @@ jobs:
         write-comment: true
         github-token: ${{ secrets.GITHUB_TOKEN }} # to be able to write the comment
         exit-code: true
-        
+          
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      if: ${{ github.event_name != 'pull_request' }}
+      with:
+        image-ref: ${{ env.DOCKERHUB_SLUG }}:latest          
+        exit-code: '1'
+        ignore-unfixed: true
+        scan-type: image
+        vuln-type: 'os,library'
+        severity: 'CRITICAL,HIGH'
+        format: 'sarif'
+        output: 'scan-results-latest.sarif'
+            
     - name: Upload SARIF result
       id: UPLOAD_SARIF
       uses: github/codeql-action/upload-sarif@v3
