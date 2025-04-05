@@ -1,0 +1,12 @@
+- hosts: nginxpruebatecnica
+  tasks:
+  - debug: msg="{{ ansible_hostname }}"
+  - name: Hostname jinja2
+    ansible.builtin.template:
+       src: hostindex.j2
+       dest: /tmp/hostname
+  - name : Instalar Nginx
+    apt:
+      name: nginx
+      state: present
+      update_cache: true
