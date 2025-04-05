@@ -128,7 +128,7 @@ Todos los ficheros están en el raiz del repositorio:
 
 Propón estrategias o herramientas para actualizar dinámicamente el inventory de Ansible en función de las IP asignadas por DHCP. 
 **La estrategia mas básica es la seguida en esta prueba, se le asigna un rango de ip en el inventario y a cada host se le aplica el playbook. Una mejora sobre esto podría ser un script que generase un inventario dinámico sobre el rango de ip indicado y según el hostname de cada maquina lanzarle el playbook adecuado. Todo esto contando que los hostname tengan una convención ya preestablecida para poder asignarles grupos en el inventario por ejemplo: web01, web02, db01....**
-
+**El semantic versioning se aplico manualmente usando tags**
 
 ## Develop
  Crear una API en python que resuelva lo siguiente: 
