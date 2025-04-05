@@ -95,8 +95,11 @@ jobs:
 
 ```
 
+### Resolución
 
 **Todos los archivos estarán en el raíz del repositorio excepto el workflow que tendrá su ruta típica, se siguieron todas las indicaciones pedidas.** 
+
+**El workflow se ejecutara cada vez que se realice un push al repositorio, realizará el build sobre el dockerfile usando el contenedor de nginx:alpine y además sobreescrivirá el archivo index.html del nginx por el requerido en la especificaciones. Por ultimo subirá la imagen al repositorio de github para contenedores y realizará el test de vulnerabilidades de docker scout.** 
 
 ## Playbook de ansible para deployar lo siguiente: 
 
@@ -111,10 +114,13 @@ jobs:
 - No tienes acceso previo a sus direcciones IP. 
 - Debes encontrar una forma de descubrir y gestionar estos equipos sin intervención manual directa en cada uno 
 
-Para la resolución de la prueba en el raiz del repositorio:
+### Resolución
+Todos los ficheros están en el raiz del repositorio:
 
 **playbook.yml**: Jugadas para instalar Nginx y jinja2 requeridos.
-**inventario.yml** : Inventario con el rango de ips para ejecutar los playbooks la clave ssh usada
+
+**inventario.yml** : Inventario con el rango de ips para ejecutar los playbooks con la ruta de la clave ssh usada
+
 **hostindex.j2**  : Jinja2 que muestra el hostname de la maquina
 
 ¿Cómo podrías adaptar el aprovisionamiento para que los equipos sean gestionables a pesar de que sus IP puedan cambiar en el futuro? 
@@ -157,7 +163,7 @@ Propón estrategias o herramientas para actualizar dinámicamente el inventory d
 ```
 
 
-Para mostrar la tabla no me quedo claro como se quería por lo tanto se crean dos post distinto, uno devuelve la tabla en texto plano (/json_a_lista) y el otro en formato html (/json_a_tabla)
+**Para mostrar la tabla no me quedo claro como se quería por lo tanto se crean dos post distinto, uno devuelve la tabla en texto plano (/json_a_lista) y el otro en formato html (/json_a_tabla)**
 
 Script Python pythonpruebatecnica.py.
 ```python
